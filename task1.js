@@ -24,14 +24,16 @@ let studentNode = xParser.querySelector("student");
 let nameNode = xParser.querySelector("name");
 let firstName = xParser.querySelector("first");
 let secondName = xParser.querySelector("second");
+let age = xParser.querySelector("age");
+let prof = xParser.querySelector("prof");
                                       
 
 let lang = nameNode.getAttribute('lang');
 
 let result = {
     list: [
-        {name: (firstName.textContent +' '+ secondName.textContent)},
-        {age: age.textContent}
+        {name: (firstName.textContent +' '+ secondName.textContent),
+        age: age.textContent, prof:  prof.textContent, lang: lang}
     ]
 
 }
