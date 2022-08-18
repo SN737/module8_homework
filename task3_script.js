@@ -20,6 +20,7 @@ inputBtn.addEventListener('click', ()=> {
         
         message.innerHTML = "<b>Число вне диапазона от 1 до 10</b>";
         input.value = '';
+        inputBtn.disabled = true;
         
     } else {
         // alert('вызываем функцию');
