@@ -19,43 +19,20 @@ let xmlData = `<list>
 
 
 
-let result = {};
+let result = [];
 const dParser = new DOMParser();
 let xParser = dParser.parseFromString(xmlData, "text/xml");
+let studentsNode = xParser.querySelectorAll("student");
 
+studentsNode.forEach(nodeItem => {
+  let person = {
+    name:`${nodeItem.querySelector("first").textContent} ${nodeItem.querySelector("second").textContent}`,
+        age: nodeItem.querySelector("age").textContent,
+        prof: nodeItem.querySelector("prof").textContent,
+        lang: nodeItem.querySelector("name").getAttribute("lang")
+  };
+  result.push(person);
 
-function objCreator(xParser) {
-  
-    let studentNode = xParser.querySelector("student");
-    let nameNode = xParser.querySelector("name");
-    let firstName = xParser.querySelector("first");
-    // console.log(firstName)
-    let secondName = xParser.querySelector("second");
-    let age = xParser.querySelector("age");
-    let prof = xParser.querySelector("prof");
-    let lang = nameNode.getAttribute('lang');
-    let keyNode = xParser.querySelector("list");
-    let keyNodeLen = xParser.querySelectorAll("list");
-   //console.log ( keyNodeLen.length)
+});
 
-    result =  {list:[ (result),         
-            {name: (firstName.textContent +' '+ secondName.textContent),
-            age: age.textContent, prof:  prof.textContent, lang: lang},]
-            
-    };
-    studentNode.remove();
-   // console.log(result)
-   
-
-  
-   if (keyNodeLen.length > 0) {          
-    objCreator(keyNode)
-    }else {return result};
-}
-
-objCreator(xParser)
 console.log(result);
-
-
-
-// console.log (keyNode)
