@@ -7,9 +7,8 @@ let  message = document.querySelector('.message');
 
 
 inputBtn.addEventListener('click', async ()=> {
-    if (!inputUpper.value.length || !inputLower.value.length ){        
-        // alert('введите числовое значение');
-        // input.value = '';
+    if (!inputUpper.value.length || !inputLower.value.length ){  
+        alert ('Вы не ввели значения')      
         return;
     } else if (inputLower.value<100 || inputLower.value>300 || inputUpper.value<100 || inputUpper.value>300 ) {
         
