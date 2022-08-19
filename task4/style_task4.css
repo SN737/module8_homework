@@ -1,0 +1,18 @@
+body{
+    background-color: rgba(146, 241, 243, 0.341);      
+}
+
+.wrap {
+    margin: 0 auto;
+    width: 10%;   
+}
+
+form{
+    display: flex;   
+    flex-direction: column;   
+}
+
+input{
+    padding: 5px;
+    margin: 3px;     
+}
