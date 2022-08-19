@@ -1,6 +1,5 @@
 const inputUpper = document.querySelector('.inputupper');
 const inputLower = document.querySelector('.inputlower');
-const inputAll = document.querySelectorAll('input');
 const inputBtn = document.querySelector('input[type="button"]');
 const image = document.querySelector('.image');
 let  message = document.querySelector('.message');
