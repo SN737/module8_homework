@@ -26,28 +26,31 @@ input{
 .image {
     margin: 5px;
     display: flex;
-    /* max-width: 1200px;
-
-    background-color: brown; */
     flex-direction: row;
     flex-wrap: wrap;
     
 }
 
 .img{
-    margin: 1px;   
+    /* margin: 1px;    */
     max-width: 400px;    
     max-height: 400px;   
     border-radius: 8px;
-    float: left
+    float: left;
+    margin: auto;
     
 }
 
-.imgcontainer{
-    float: left;
+.imgcontainer{    
     margin: 0 0 0 1.5%;
     border-radius: 8px;
+    height: 400px; 
+    background-color: blueviolet;
+    
+
     /* background: #f0f0f0; */
+    
+    
    
       
     

@@ -4,7 +4,7 @@ const inputBtn = document.querySelector('input[type="button"]');
 const image = document.querySelector('.image');
 let  message = document.querySelector('.message');
 let picture = document.querySelector('.image');
-let imageArray = [];
+
 let key = 'photoGallery';
 checkLocalStorage();
 
