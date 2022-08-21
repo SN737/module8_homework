@@ -7,7 +7,7 @@ let picture = document.querySelector('.picture');
 
 
 
-inputBtn.addEventListener('click', async ()=> {
+inputBtn.addEventListener('click', ()=> {
     if (validCheck() !== 'valid') {
         return;
     } else  {makeRequest(inputPages.value, inputLimit.value);    
@@ -34,19 +34,21 @@ function validCheck () {
         return "valid";}
 }
 
-function makeRequest(pages, limit) {
-    let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
-    alert(url)
-    fetch (url)
+async function makeRequest(pages, limit) {
+    let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}/`;
+   console.log(url);
+   const response = await fetch (url)
     .then ((response) => {
-        return renderImage(response.url);})
-    .catch (() =>{alert('Ошибка запроса');
-        });
+        console.log(response)});
+    //     return renderImage(JSON.parse(response));})
+    // .catch (() =>{alert('Ошибка запроса');
+    //     });
 }
 
-function renderImage(result){
-    result.forEach(item => {
-        let itemImg= `<div class = "img"><img src="${item.download_url}"/></div>`;
+function renderImage(response){
+    
+    response.forEach(item => {
+        let itemImg= `<div class = "img"><img src="${item.download_url}"></div>`;
         picture.innerHTML += itemImg;  
     });
 }
