@@ -52,7 +52,7 @@ function renderImg(respArr) {
 
     picture.innerHTML= '';
         respArr.forEach(item => {
-        let itenImg= `<div class = "img"><img src="${item.download_url}"/></div>`;
-        picture.innerHTML += itenImg;  
+        let itemImg= `<div class = "img"><img src="${item.download_url}"/></div>`;
+        picture.innerHTML += itemImg;  
     });
 }
