@@ -3,15 +3,28 @@ let  inputLimit = document.querySelector('.inputlimit');
 const inputBtn = document.querySelector('input[type="button"]');
 const image = document.querySelector('.image');
 let  message = document.querySelector('.message');
-let picture = document.querySelector('.picture');
+let picture = document.querySelector('.image');
+let imageArray = [];
+let key = 'photoGallery';
+checkLocalStorage();
 
+function checkLocalStorage(){
+    let localStorageData = localStorage.getItem(key);
+    if (localStorageData == null) {
+        return [];
+        } else {
+            //alert ('данные есть идём сюда')
+            let imageArray =  JSON.parse(localStorage.getItem(key));
+            renderImage(imageArray);
+            return imageArray;
+        }
+}
 
 
 inputBtn.addEventListener('click', ()=> {
     if (validCheck() !== 'valid') {
         return;
-    } else  {makeRequest(inputPages.value, inputLimit.value);    
-    }
+    } else  {makeRequest(inputPages.value, inputLimit.value);}
 });
 
 
@@ -35,11 +48,13 @@ function validCheck () {
 }
 
 async function makeRequest(pages, limit) {
-    let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}/`;
-   console.log(url);
-   const response = await fetch (url)
-    .then ((response) => {
-        console.log(response)});
+   let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
+   let request = await fetch(url);
+   let response = await request.json();
+   localStorage.setItem(key, JSON.stringify(response));
+   renderImage(response);
+     
+    // .then ((response) => {       
     //     return renderImage(JSON.parse(response));})
     // .catch (() =>{alert('Ошибка запроса');
     //     });
@@ -48,7 +63,7 @@ async function makeRequest(pages, limit) {
 function renderImage(response){
     
     response.forEach(item => {
-        let itemImg= `<div class = "img"><img src="${item.download_url}"></div>`;
+        let itemImg= `<div class = "img"><img class = "img" src="${item.download_url}"/></div>`;
         picture.innerHTML += itemImg;  
     });
 }

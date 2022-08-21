@@ -11,15 +11,12 @@ input[type="number"]::-webkit-inner-spin-button {
     display: flex;
     min-width: 200px;
     height: 180px;
-    margin: 5px;
-    
+    margin: 5px;    
 }
 
 .picture {
-    display: flex;
-    
-   flex-wrap: wrap;
-  
+   display: flex;    
+   flex-wrap: wrap;  
    flex-grow: unset;
    
 }
@@ -27,11 +24,9 @@ input[type="number"]::-webkit-inner-spin-button {
     margin: 0, auto;
     display: flex;
     flex-direction: column;
-
 }
 
 form{
     margin: 10px;
-    align-self: center;
-    
+    align-self: center;    
 }
