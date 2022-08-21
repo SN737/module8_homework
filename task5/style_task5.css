@@ -30,16 +30,26 @@ input{
 
     background-color: brown; */
     flex-direction: row;
+    flex-wrap: wrap;
     
 }
 
 .img{
-    margin: 1px;
-    background-color: blueviolet;
-    max-width: 400px;
-    max-height: 400px;
-    overflow: hidden;
-    flex-grow: unset;
-    border-radius: 5px;
+    margin: 1px;   
+    max-width: 400px;    
+    max-height: 400px;   
+    border-radius: 8px;
+    float: left
     
+}
+
+.imgcontainer{
+    float: left;
+    margin: 0 0 0 1.5%;
+    border-radius: 8px;
+    /* background: #f0f0f0; */
+   
+      
+    
+
 }

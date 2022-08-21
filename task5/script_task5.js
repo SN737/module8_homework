@@ -52,18 +52,13 @@ async function makeRequest(pages, limit) {
    let request = await fetch(url);
    let response = await request.json();
    localStorage.setItem(key, JSON.stringify(response));
-   renderImage(response);
-     
-    // .then ((response) => {       
-    //     return renderImage(JSON.parse(response));})
-    // .catch (() =>{alert('Ошибка запроса');
-    //     });
+   renderImage(response);   
 }
 
 function renderImage(response){
     
     response.forEach(item => {
-        let itemImg= `<div class = "img"><img class = "img" src="${item.download_url}"/></div>`;
+        let itemImg= `<div class = "imgcontainer"><img class = "img" src="${item.download_url}"/></div>`;
         picture.innerHTML += itemImg;  
     });
 }
