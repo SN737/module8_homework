@@ -18,16 +18,15 @@ function checkLocalStorage(){
         }
 }
 
-
 inputBtn.addEventListener('click', ()=> {
     if (validCheck() !== 'valid') {
         return;
     } else{
         makeRequest(inputPages.value, inputLimit.value);
+        let picture = document.querySelector('.image');
         picture.remove();
     }
 });
-
 
 function validCheck () {
     let limit = Number(inputLimit.value);
@@ -60,11 +59,11 @@ async function makeRequest(pages, limit) {
 function renderImage(response){ 
     let picture = document.createElement('div');
     wrapper.append(picture);
-    picture.classList.add('image');
+    picture.classList.add('image');  
     
     response.forEach(item => {
         let itemImg= `<div class = "imgcontainer"><img class = "img" src="${item.download_url}"/></div>`;
-        picture.innerHTML += itemImg;  
+        picture.innerHTML += itemImg;        
     });
 }
 

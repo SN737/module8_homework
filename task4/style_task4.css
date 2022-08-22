@@ -16,3 +16,12 @@ input{
     padding: 5px;
     margin: 3px;     
 }
+
+.image{
+    padding-top: 10px;
+}
+.img{
+    display: flex;
+   justify-content: center;
+   align-content: center;
+}

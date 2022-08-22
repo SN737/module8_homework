@@ -1,4 +1,7 @@
-let xmlData = `<list>
+// Вам дана заготовка и результат, который вы должны получить. Ваша задача — написать код,
+//  который будет преобразовывать XML в JS-объект и выводить его в консоль.
+
+ let xmlData = `<list>
 <student>
   <name lang="en">
     <first>Ivan</first>
@@ -17,8 +20,6 @@ let xmlData = `<list>
 </student>
 </list>`;
 
-
-
 let result = [];
 const dParser = new DOMParser();
 let xParser = dParser.parseFromString(xmlData, "text/xml");
@@ -32,7 +33,6 @@ studentsNode.forEach(nodeItem => {
         lang: nodeItem.querySelector("name").getAttribute("lang")
   };
   result.push(person);
-
 });
 
 console.log(result);
