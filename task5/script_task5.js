@@ -1,19 +1,17 @@
-let  inputPages = document.querySelector('.inputpages');
-let  inputLimit = document.querySelector('.inputlimit');
+const wrapper = document.querySelector('.container');
+const inputPages = document.querySelector('.inputpages');
+const inputLimit = document.querySelector('.inputlimit');
 const inputBtn = document.querySelector('input[type="button"]');
-const image = document.querySelector('.image');
-let  message = document.querySelector('.message');
-let picture = document.querySelector('.image');
+const message = document.querySelector('.message');
+const key = 'photoGallery';
 
-let key = 'photoGallery';
 checkLocalStorage();
 
 function checkLocalStorage(){
     let localStorageData = localStorage.getItem(key);
     if (localStorageData == null) {
-        return [];
-        } else {
-            //alert ('данные есть идём сюда')
+        return;
+        } else {            
             let imageArray =  JSON.parse(localStorage.getItem(key));
             renderImage(imageArray);
             return imageArray;
@@ -24,7 +22,10 @@ function checkLocalStorage(){
 inputBtn.addEventListener('click', ()=> {
     if (validCheck() !== 'valid') {
         return;
-    } else  {makeRequest(inputPages.value, inputLimit.value);}
+    } else{
+        makeRequest(inputPages.value, inputLimit.value);
+        picture.remove();
+    }
 });
 
 
@@ -52,10 +53,14 @@ async function makeRequest(pages, limit) {
    let request = await fetch(url);
    let response = await request.json();
    localStorage.setItem(key, JSON.stringify(response));
+   clearInputs();
    renderImage(response);   
 }
 
-function renderImage(response){
+function renderImage(response){ 
+    let picture = document.createElement('div');
+    wrapper.append(picture);
+    picture.classList.add('image');
     
     response.forEach(item => {
         let itemImg= `<div class = "imgcontainer"><img class = "img" src="${item.download_url}"/></div>`;
