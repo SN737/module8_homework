@@ -47,14 +47,27 @@ function validCheck () {
         return "valid";}
 }
 
+// async function makeRequest(pages, limit) {
+//    let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
+//    let request = await fetch(url);
+//    let response = await request.json();
+//    localStorage.setItem(key, JSON.stringify(response));
+//    clearInputs();
+//    renderImage(response);   
+// }
+
+ // Переписал функцию makeRequest используя промисы (.then) 
 async function makeRequest(pages, limit) {
-   let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
-   let request = await fetch(url);
-   let response = await request.json();
-   localStorage.setItem(key, JSON.stringify(response));
-   clearInputs();
-   renderImage(response);   
-}
+    let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
+    await fetch(url)
+        .then(response => {return response.json();})
+        .then(json => {localStorage.setItem(key, JSON.stringify(json));
+            renderImage(json);})        
+        .then(clearInputs())        
+        .catch(()=> {
+            alert("ошибка запроса");
+        });   
+ }
 
 function renderImage(response){ 
     let picture = document.createElement('div');

@@ -1,7 +1,7 @@
 // Вам дана заготовка и результат, который вы должны получить. Ваша задача — написать код,
 //  который будет преобразовывать XML в JS-объект и выводить его в консоль.
 
- let xmlData = `<list>
+let xmlData = `<list>
 <student>
   <name lang="en">
     <first>Ivan</first>
@@ -28,9 +28,9 @@ let studentsNode = xParser.querySelectorAll("student");
 studentsNode.forEach(nodeItem => {
   let person = {
     name:`${nodeItem.querySelector("first").textContent} ${nodeItem.querySelector("second").textContent}`,
-        age: nodeItem.querySelector("age").textContent,
-        prof: nodeItem.querySelector("prof").textContent,
-        lang: nodeItem.querySelector("name").getAttribute("lang")
+    age: nodeItem.querySelector("age").textContent,
+    prof: nodeItem.querySelector("prof").textContent,
+    lang: nodeItem.querySelector("name").getAttribute("lang")
   };
   result.push(person);
 });
