@@ -51,8 +51,8 @@ function validCheck () {
 async function makeRequest(pages, limit) {
    const url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
    try{
-    const  request = await fetch(url);
-    const  response = await request.json();
+    const request = await fetch(url);
+    const response = await request.json();
     localStorage.setItem(key, JSON.stringify(response));
     clearInputs();
     renderImage(response);
