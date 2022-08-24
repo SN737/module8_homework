@@ -49,15 +49,17 @@ function validCheck () {
 
 
 async function makeRequest(pages, limit) {
-   let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
+   const url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
    try{
-   const  request = await fetch(url);
-   const  response = await request.json();
-   localStorage.setItem(key, JSON.stringify(response));
-   clearInputs();
-   renderImage(response);
+    const  request = await fetch(url);
+    const  response = await request.json();
+    localStorage.setItem(key, JSON.stringify(response));
+    clearInputs();
+    renderImage(response);
    }catch (error) {
-    alert(error.message);}   
+    alert(error.message);
+    clearInputs();
+   }   
 }
 
 
