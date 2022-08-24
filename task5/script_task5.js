@@ -22,10 +22,10 @@ inputBtn.addEventListener('click', ()=> {
     if (validCheck() !== 'valid') {
         return;
     } else{
-        makeRequest(inputPages.value, inputLimit.value);
+        makeRequest(inputPages.value, inputLimit.value);            
         let picture = document.querySelector('.image');
         picture.remove();
-    }
+        }
 });
 
 function validCheck () {
@@ -47,6 +47,20 @@ function validCheck () {
         return "valid";}
 }
 
+
+async function makeRequest(pages, limit) {
+   let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
+   try{
+   const  request = await fetch(url);
+   const  response = await request.json();
+   localStorage.setItem(key, JSON.stringify(response));
+   clearInputs();
+   renderImage(response);
+   }catch (error) {
+    alert(error.message);}   
+}
+
+
 // async function makeRequest(pages, limit) {
 //    let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
 //    let request = await fetch(url);
@@ -56,18 +70,23 @@ function validCheck () {
 //    renderImage(response);   
 // }
 
+
+
+
+
  // Переписал функцию makeRequest используя промисы (.then) 
-async function makeRequest(pages, limit) {
-    let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
-    await fetch(url)
-        .then(response => {return response.json();})
-        .then(json => {localStorage.setItem(key, JSON.stringify(json));
-            renderImage(json);})        
-        .then(clearInputs())        
-        .catch(()=> {
-            alert("ошибка запроса");
-        });   
- }
+ // сказали что это шляпа вариант, хоть и работает
+// async function makeRequest(pages, limit) {
+//     let url =` https://picsum.photos/v2/list?page=${pages}&limit=${limit}`;
+//     await fetch(url)
+//         .then(response => {return response.json();})
+//         .then(json => {localStorage.setItem(key, JSON.stringify(json));
+//             renderImage(json);})        
+//         .then(clearInputs())        
+//         .catch(()=> {
+//             alert("ошибка запроса");
+//         });   
+//  }
 
 function renderImage(response){ 
     let picture = document.createElement('div');
